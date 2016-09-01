@@ -1,0 +1,738 @@
+@import 'variables/shared';
+@import 'mixins';
+
+// Block for container element including HTML rendered from Markdown text.
+.markdownContent {
+  font-size: 1.15em;
+  word-wrap: break-word;
+
+  &.markdownContent-diff {
+    a {
+      text-decoration: none;
+
+      &[data-before-href] {
+        border-bottom: dotted 1px #999;
+        text-decoration: none;
+      }
+    }
+
+    .del {
+      background-color: #ffeaea;
+      color: #cb4000;
+
+      &:first-child > * {
+        margin-top: 0 !important;
+      }
+    }
+
+    ins {
+      background-color: #e9ffe9;
+      text-decoration: none;
+
+      &:first-child > * {
+        margin-top: 0 !important;
+      }
+    }
+
+    li {
+      &.removed {
+        color: #cb4000;
+      }
+    }
+
+    > * {
+      margin-left: 16px !important;
+    }
+
+    > .del {
+      background-color: inherit;
+      border-left: solid 4px #cb4000;
+      color: inherit;
+      display: block;
+      margin-left: 0 !important;
+      padding-left: 16px;
+      text-decoration: none;
+    }
+
+    > ins {
+      background-color: inherit;
+      border-left: solid 4px #7dcd55;
+      color: inherit;
+      display: block;
+      margin-left: 0 !important;
+      padding-left: 16px;
+    }
+
+    > .changed {
+      border-left: solid 4px #ffc134;
+      margin-left: 0 !important;
+      padding-left: 16px;
+    }
+  }
+
+  > *:first-child {
+    margin-top: 0 !important;
+  }
+
+  // Modifier to display anchor element.
+  &-headingEnabled {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      position: relative;
+
+      @media (min-width: $screen-sm-min) {
+        &:hover {
+          .fa.fa-link,
+          .icon-link {
+            display: inline-block;
+          }
+        }
+
+        .fa.fa-link:hover,
+        .icon-link:hover {
+          color: $link-color;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  blockquote {
+    color: $gray;
+    font-size: 1em;
+    border-left: solid 4px #ddd;
+    padding: .8em;
+
+    margin: {
+      top: 1em;
+      bottom: 1em;
+      left: .8em;
+    }
+
+    > *:first-child {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $gray;
+    }
+  }
+
+  a {
+    @include break-word;
+
+    // Override bootstrap `code` tag
+    code {
+      color: $brand-primary;
+    }
+  }
+
+  hr {
+    margin: 1em 0;
+    border: 0;
+    height: 2px;
+    background-color: $base-border-color;
+  }
+
+  .is-slide & hr {
+    visibility: hidden;
+  }
+
+  em {
+    font: {
+      family: $italic-font-family;
+      style: italic;
+    }
+  }
+
+  strong {
+    font-weight: 900;
+  }
+
+  b {
+    font-weight: 900;
+  }
+
+  del {
+    text-decoration: line-through;
+  }
+
+  p {
+    margin-bottom: 0;
+    margin-top: 1.6em;
+    font-size: 1em;
+    line-height: 1.875;
+    word-wrap: break-word;
+
+    @media (max-width: $screen-xs-max) {
+      line-height: 1.6;
+    }
+  }
+
+  img {
+    @include box-sizing(border-box);
+    vertical-align: middle;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  dl {
+    margin: 1em 0;
+
+    dd {
+      margin-left: 2em;
+    }
+  }
+
+  table {
+    display: block;
+    overflow: auto;
+    margin: 1em 0;
+    border-left: solid 1px lighten($base-border-color, 5%);
+  }
+
+  td,
+  th {
+    border-bottom: solid 1px $base-border-color;
+    border-right: solid 1px $base-border-color;
+    padding: 8px 10px;
+    word-wrap: break-word;
+  }
+
+  thead td,
+  th {
+    font-weight: 900;
+    background-color: #fff;
+    border-top: solid 1px lighten($base-border-color, 5%);
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, .03);
+  }
+
+  li p:first-child {
+    margin: 0;
+  }
+
+  ol,
+  ul {
+    line-height: 1.7;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding-left: 1.5em;
+
+    @media (max-width: $screen-xs-max) {
+      line-height: 1.6;
+    }
+  }
+
+  ol > li {
+    list-style-type: decimal;
+  }
+
+  li > ol,
+  li > ul {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Helvetica Neue', Helvetica, 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', メイリオ, Meiryo, sans-serif;
+    font-weight: normal;
+    line-height: 1.4;
+    margin: 1.35em 0 .7em;
+
+    + ol,
+    + p,
+    + ul {
+      margin-top: 0;
+    }
+  }
+
+  h1 {
+    $font-size: 1.7em;
+    border-bottom: solid 3px #eee;
+    font-size: $font-size;
+    line-height: 1.2;
+    margin-bottom: .5em;
+    margin-top: 2.5em;
+    padding-bottom: .3em;
+
+    .emoji {
+      @include square(1.1em);
+    }
+
+    + h2 {
+      margin-top: 1.1em;
+    }
+  }
+
+  h2 {
+    $font-size: 1.6em;
+    border-bottom: solid 1px #eee;
+    font-size: $font-size;
+    line-height: 1.225;
+    margin-bottom: .5em;
+    margin-top: 2.5em;
+    padding-bottom: .3em;
+
+    .emoji {
+      @include square(1em);
+    }
+
+    + h3 {
+      margin-top: 1.1em;
+    }
+  }
+
+  h3 {
+    font-size: 1.3em;
+    line-height: 1.43;
+    margin-top: 3em;
+
+    .emoji {
+      @include square(1em);
+    }
+  }
+
+  h4 {
+    font-size: 1.2em;
+    margin-top: 1.3em;
+  }
+
+  h5 {
+    margin-top: 1.5em;
+    font-size: 1.1em;
+  }
+
+  h6 {
+    margin-top: 1.5em;
+    font-size: 1em;
+    color: #777;
+  }
+
+  // Code container element.
+  .code-frame {
+    @include border-radius($border-radius-base);
+    margin: 1em 0;
+    background-color: $code-bg;
+    line-height: 0;
+    overflow: hidden;
+
+    pre {
+      @include border-radius($border-radius-base);
+      border: 0;
+      margin: 0;
+      padding: .6em 1.2em;
+      line-height: 1.2;
+      background-color: $code-bg;
+      overflow-x: auto;
+      word-wrap: normal;
+      white-space: pre;
+
+      font: {
+        size: .8em;
+        family: $code-font-family;
+      }
+    }
+  }
+
+  // Code label element. (e.g. qiita.rb)
+  .code-lang {
+    color: $gray;
+    display: inline-block;
+    padding: .25em .5em;
+    margin: 0;
+    line-height: 1;
+    background-color: rgba(0, 0, 0, .07);
+    font-size: .8em;
+    font-weight: 400;
+  }
+
+  // All img elements for Emoji have .emoji class.
+  .emoji {
+    @include square(20px);
+    @include emoji;
+    vertical-align: text-bottom;
+  }
+
+  // All heading elements have their .fa-link element for user to click it to get anchored URL.
+  // Maybe .icon-link selector is no longer used.
+  .fa.fa-link,
+  .icon-link {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: -28px;
+    margin-top: -18px;
+    padding: 10px 5px 10px 10px;
+    color: $gray;
+
+    font: {
+      size: 16px;
+      weight: 400;
+    }
+  }
+
+  .footnotes {
+    font-size: .9em;
+    margin-top: 2em;
+
+    hr {
+      display: none;
+    }
+  }
+
+  // All heading elements have their fragment elements, anchored from ToC.
+  .fragment {
+    position: relative;
+    top: -10px;
+    display: block;
+  }
+
+  // All code blocks have their .highlight elements.
+  .highlight {
+    background: #fff;
+
+    .c {
+      color: #998;
+      font-style: italic;
+    }
+
+    .err {
+      color: #a61717;
+      background-color: #e3d2d2;
+    }
+
+    .k {
+      font-weight: bold;
+    }
+
+    .o {
+      font-weight: bold;
+    }
+
+    .cm {
+      color: #998;
+      font-style: italic;
+    }
+
+    .cp {
+      color: #999;
+      font-weight: bold;
+    }
+
+    .c1 {
+      color: #998;
+      font-style: italic;
+    }
+
+    .cs {
+      color: #999;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .gd {
+      color: #000;
+      background-color: #fdd;
+
+      .x {
+        color: #000;
+        background-color: #faa;
+      }
+    }
+
+    .ge {
+      font-style: italic;
+    }
+
+    .gr {
+      color: #a00;
+    }
+
+    .gh {
+      color: #999;
+    }
+
+    .gi {
+      color: #000;
+      background-color: #dfd;
+
+      .x {
+        color: #000;
+        background-color: #afa;
+      }
+    }
+
+    .go {
+      color: #888;
+    }
+
+    .gp {
+      color: #555;
+    }
+
+    .gs {
+      font-weight: bold;
+    }
+
+    .gu {
+      color: #800080;
+      font-weight: bold;
+    }
+
+    .gt {
+      color: #a00;
+    }
+
+    .kc {
+      font-weight: bold;
+    }
+
+    .kd {
+      font-weight: bold;
+    }
+
+    .kn {
+      font-weight: bold;
+    }
+
+    .kp {
+      font-weight: bold;
+    }
+
+    .kr {
+      font-weight: bold;
+    }
+
+    .kt {
+      color: #458;
+      font-weight: bold;
+    }
+
+    .m {
+      color: #099;
+    }
+
+    .s {
+      color: #d14;
+    }
+
+    .n {
+      color: #333;
+    }
+
+    .na {
+      color: #008080;
+    }
+
+    .nb {
+      color: #0086b3;
+    }
+
+    .nc {
+      color: #458;
+      font-weight: bold;
+    }
+
+    .no {
+      color: #008080;
+    }
+
+    .ni {
+      color: #800080;
+    }
+
+    .ne {
+      color: #900;
+      font-weight: bold;
+    }
+
+    .nf {
+      color: #900;
+      font-weight: bold;
+    }
+
+    .nn {
+      color: #555;
+    }
+
+    .nt {
+      color: #000080;
+    }
+
+    .nv {
+      color: #008080;
+    }
+
+    .ow {
+      font-weight: bold;
+    }
+
+    .w {
+      color: #bbb;
+    }
+
+    .mf {
+      color: #099;
+    }
+
+    .mh {
+      color: #099;
+    }
+
+    .mi {
+      color: #099;
+    }
+
+    .mo {
+      color: #099;
+    }
+
+    .sb {
+      color: #d14;
+    }
+
+    .sc {
+      color: #d14;
+    }
+
+    .sd {
+      color: #d14;
+    }
+
+    .s2 {
+      color: #d14;
+    }
+
+    .se {
+      color: #d14;
+    }
+
+    .sh {
+      color: #d14;
+    }
+
+    .si {
+      color: #d14;
+    }
+
+    .sx {
+      color: #d14;
+    }
+
+    .sr {
+      color: #009926;
+    }
+
+    .s1 {
+      color: #d14;
+    }
+
+    .ss {
+      color: #990073;
+    }
+
+    .bp {
+      color: #999;
+    }
+
+    .vc {
+      color: #008080;
+    }
+
+    .vg {
+      color: #008080;
+    }
+
+    .vi {
+      color: #008080;
+    }
+
+    .il {
+      color: #099;
+    }
+
+    .gc {
+      color: #999;
+      background-color: #eaf2f5;
+    }
+  }
+
+  .MathJax img,
+  .MathJax_Display img {
+    border: 0 !important;
+  }
+
+  // .parenthesis is not used in normal article pages, but Terms of Service or Privacy pages.
+  .parenthesis {
+    li {
+      list-style-type: none;
+
+      span {
+        margin-left: -1.5em;
+        margin-right: .5em;
+      }
+    }
+  }
+
+  // The list elements classed with .task-list-item has checkbox elements inside,
+  // so the checkboxes substite for their list circles.
+  .task-list-item {
+    list-style-type: none;
+  }
+
+  // Move checkbox to the same position with list circle.
+  .task-list-item-checkbox {
+    margin: .4em .5em 0 -1.3em;
+  }
+
+  // The default style of disabled checkbox is too noisy.
+  .task-list-item-checkbox[disabled] {
+    cursor: default;
+  }
+  $icon-size: 18px;
+
+  %icon {
+    @include team-user-icon($icon-size);
+    margin-right: .3em;
+    text-align: center;
+    vertical-align: text-bottom;
+  }
+
+  .user-icon {
+    @extend %icon;
+  }
+
+  .coeditors-icon {
+    @extend %icon;
+    @include coeditorsIcon($icon-size, 0);
+  }
+
+  .project-icon {
+    @extend %icon;
+    @include fa-icon($fa-var-flag);
+    color: #999;
+    font-size: round($icon-size * .85);
+  }
+
+  .anchor-target {
+    background-color: #fff3b8;
+    border-radius: .1em;
+  }
+}
