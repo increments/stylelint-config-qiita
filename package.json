@@ -25,7 +25,10 @@
   "author": "Masaaki Morishita",
   "license": "MIT",
   "devDependencies": {
-    "ava": "^0.16.0",
-    "stylelint": "^7.4.2"
+    "ava": "^0.19.1",
+    "stylelint": "^7.10.1"
+  },
+  "dependencies": {
+    "stylelint-order": "^0.4.3"
   }
 }
