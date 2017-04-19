@@ -1,4 +1,7 @@
 module.exports = {
+  "plugins": [
+    "stylelint-order",
+  ],
   "rules": {
     "at-rule-no-vendor-prefix": true,
     "block-no-empty": true,
@@ -10,7 +13,6 @@ module.exports = {
     "declaration-block-no-duplicate-properties": true,
     "declaration-block-no-ignored-properties": true,
     "declaration-block-no-shorthand-property-overrides": true,
-    "declaration-block-properties-order": require('./properties-order'),
     "declaration-no-important": true,
     "function-calc-no-unspaced-operator": true,
     "function-linear-gradient-no-nonstandard-direction": true,
@@ -48,5 +50,8 @@ module.exports = {
     "unit-no-unknown": true,
     "value-list-max-empty-lines": 0,
     "value-no-vendor-prefix": true,
+
+    // stylelint-order
+    "order/properties-order": require('./properties-order'),
   },
 }
