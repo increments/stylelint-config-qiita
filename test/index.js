@@ -26,6 +26,6 @@ test("a warning with invalid css", t => {
     const { errored, results } = data;
     const { warnings } = results[0];
     t.truthy(errored, "errored");
-    t.is(warnings.length, 128, "flags 128 warning");
+    t.is(warnings.length, 132, "flags 132 warning");
   });
 });
