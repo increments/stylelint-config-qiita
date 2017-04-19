@@ -1,5 +1,6 @@
 module.exports = {
   "plugins": [
+    "stylelint-csstree-validator",
     "stylelint-order",
   ],
   "rules": {
@@ -9,9 +10,7 @@ module.exports = {
     "color-hex-length": "short",
     "color-no-invalid-hex": true,
     "comment-no-empty": true,
-    "custom-property-no-outside-root": true,
     "declaration-block-no-duplicate-properties": true,
-    "declaration-block-no-ignored-properties": true,
     "declaration-block-no-shorthand-property-overrides": true,
     "declaration-no-important": true,
     "function-calc-no-unspaced-operator": true,
@@ -23,7 +22,6 @@ module.exports = {
     "max-empty-lines": 1,
     "media-feature-name-case": "lower",
     "media-feature-name-no-vendor-prefix": true,
-    "media-feature-no-missing-punctuation": true,
     "no-empty-source": true,
     "no-eol-whitespace": true,
     "no-extra-semicolons": true,
@@ -40,16 +38,17 @@ module.exports = {
     "selector-pseudo-class-case": "lower",
     "selector-pseudo-element-case": "lower",
     "selector-pseudo-element-colon-notation": "double",
-    "selector-root-no-composition": true,
     "selector-type-case": "lower",
     "shorthand-property-no-redundant-values": true,
     "string-no-newline": true,
     "string-quotes": "single",
-    "time-no-imperceptible": true,
     "unit-case": "lower",
     "unit-no-unknown": true,
     "value-list-max-empty-lines": 0,
     "value-no-vendor-prefix": true,
+
+    // stylelint-csstree-validator
+    "csstree/validator": true,
 
     // stylelint-order
     "order/properties-order": require('./properties-order'),
