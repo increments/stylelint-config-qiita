@@ -41,7 +41,6 @@ module.exports = {
     "shorthand-property-no-redundant-values": true,
     "string-no-newline": true,
     "string-quotes": "single",
-    "time-no-imperceptible": true,
     "unit-case": "lower",
     "unit-no-unknown": true,
     "value-list-max-empty-lines": 0,
