@@ -1,7 +1,6 @@
 module.exports = {
   "plugins": [
-    "stylelint-csstree-validator",
-    "stylelint-order",
+    "stylelint-csstree-validator"
   ],
   "rules": {
     "at-rule-no-vendor-prefix": true,
@@ -19,7 +18,6 @@ module.exports = {
     "indentation": 2,
     "keyframe-declaration-no-important": true,
     "length-zero-no-unit": true,
-    "max-empty-lines": 1,
     "media-feature-name-case": "lower",
     "media-feature-name-no-vendor-prefix": true,
     "no-empty-source": true,
@@ -48,9 +46,6 @@ module.exports = {
     "value-no-vendor-prefix": true,
 
     // stylelint-csstree-validator
-    "csstree/validator": true,
-
-    // stylelint-order
-    "order/properties-order": require('./properties-order'),
+    "csstree/validator": true
   },
 }

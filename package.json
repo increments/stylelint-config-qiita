@@ -29,7 +29,6 @@
     "stylelint": "^7.10.1"
   },
   "dependencies": {
-    "stylelint-csstree-validator": "^1.1.1",
-    "stylelint-order": "^0.4.3"
+    "stylelint-csstree-validator": "^1.1.1"
   }
 }

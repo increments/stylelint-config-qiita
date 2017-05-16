@@ -1,3 +1,8 @@
+## v2.1.0
+
+- Remove stylelint-order plugin
+- Remove `max-empty-lines` rule
+
 ## v2.0.0
 
 - Add stylelint-csstree-validator plugin.
