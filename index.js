@@ -18,7 +18,6 @@ module.exports = {
     "indentation": 2,
     "keyframe-declaration-no-important": true,
     "length-zero-no-unit": true,
-    "max-empty-lines": 1,
     "media-feature-name-case": "lower",
     "media-feature-name-no-vendor-prefix": true,
     "no-empty-source": true,
