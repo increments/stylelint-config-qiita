@@ -1,7 +1,6 @@
 module.exports = {
   "plugins": [
-    "stylelint-csstree-validator",
-    "stylelint-order",
+    "stylelint-csstree-validator"
   ],
   "rules": {
     "at-rule-no-vendor-prefix": true,
@@ -48,9 +47,6 @@ module.exports = {
     "value-no-vendor-prefix": true,
 
     // stylelint-csstree-validator
-    "csstree/validator": true,
-
-    // stylelint-order
-    "order/properties-order": require('./properties-order'),
+    "csstree/validator": true
   },
 }
